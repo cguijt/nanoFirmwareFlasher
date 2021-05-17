@@ -229,7 +229,8 @@ namespace nanoFramework.Tools.FirmwareFlasher
                         o.SerialPort,
                         o.BaudRate,
                         o.Esp32FlashMode,
-                        o.Esp32FlashFrequency);
+                        o.Esp32FlashFrequency,
+                        o.Esp32PartitionTableSize);
                 }
                 catch(Exception)
                 {

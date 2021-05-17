@@ -48,6 +48,11 @@ namespace nanoFramework.Tools.FirmwareFlasher
         private readonly int _flashFrequency = 0;
 
         /// <summary>
+        /// Partition table size, when specified in the options.
+        /// </summary>
+        private readonly int _partitionTableSize = 0;
+
+        /// <summary>
         /// The size of the flash in bytes; 4 MB = 0x40000 bytes
         /// </summary>
         private int _flashSize = -1;
@@ -153,7 +158,8 @@ namespace nanoFramework.Tools.FirmwareFlasher
             string serialPort, 
             int baudRate,
             string flashMode, 
-            int flashFrequency)
+            int flashFrequency,
+            int esp32PartitionTableSize)
         {
             // open/close the port to see if it is available
             using (SerialPort test = new SerialPort(serialPort, baudRate))
@@ -180,6 +186,7 @@ namespace nanoFramework.Tools.FirmwareFlasher
             _baudRate = baudRate;
             _flashMode = flashMode;
             _flashFrequency = flashFrequency;
+            _partitionTableSize = esp32PartitionTableSize;
         }
 
         /// <summary>

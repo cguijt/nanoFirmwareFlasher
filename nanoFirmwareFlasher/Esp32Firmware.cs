@@ -23,20 +23,26 @@ namespace nanoFramework.Tools.FirmwareFlasher
 
         internal Dictionary<int, string> FlashPartitions;
 
+        internal int _partitionTableSize;
+
 
         /// <summary>
         /// Address of the deployment partition.
         /// </summary>
         internal int DeploymentPartionAddress =>  0x110000;
 
-        public Esp32Firmware(string targetName, string fwVersion, bool stable)
+        public Esp32Firmware(string targetName, string fwVersion, bool stable, int partitionTableSize)
             :base(targetName, fwVersion, stable)
         {
+            _partitionTableSize = partitionTableSize;
         }
 
         internal async System.Threading.Tasks.Task<ExitCodes> DownloadAndExtractAsync(int flashSize)
         {
             string humanReadable = flashSize >= 0x10000 ? $"{ flashSize / 0x100000 }MB" : $"{ flashSize / 0x400 }kB";
+
+            // check if the option to override the partition table was set
+            if()
 
             if (!SupportedFlashSizes.Contains(flashSize))
             {
